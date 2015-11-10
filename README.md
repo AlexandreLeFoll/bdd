@@ -8,3 +8,7 @@ Question 1:
 		Authentification
 		
 	Météo:
+		Météo par ville par heure
+		Météo par ville par nom
+		Météo par vile par ID
+		Météo par ville par coordonnées GPS
