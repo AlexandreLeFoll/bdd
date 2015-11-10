@@ -14,3 +14,12 @@ Question 1:
 		Météo par ville par nom
 		Météo par vile par ID
 		Météo par ville par coordonnées GPS
+		Météo par pays
+		
+Question 2:
+
+	Choix de GitHub
+	
+	Liste des requetes POST:
+		Requetes HTTP
+		
