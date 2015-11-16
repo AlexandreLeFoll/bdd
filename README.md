@@ -21,5 +21,13 @@ Question 2:
 	Choix de GitHub
 	
 	Liste des requetes POST:
-		Requetes HTTP
-		
+		POST http://server/simplegit-progit.git/git-receive/pack
+        curl -i -u username -d '{"scopes":["public_repo"]}' https://api.github.com/authorizations
+
+    Liste des requêtes HTTP GET :
+        curl -i "https://api.github.com/repos/vmg/redcarpet/issues?state=closed"
+        curl https://api.github.com
+
+    Requêtes Authentifiées :
+        curl https://api.github.com/?access_token=OAUTH-TOKEN
+        curl -H "Authorization: token OAUTH-TOKEN" https://api.github.com
