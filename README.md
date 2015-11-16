@@ -31,3 +31,26 @@ Question 2:
     Requêtes Authentifiées :
         curl https://api.github.com/?access_token=OAUTH-TOKEN
         curl -H "Authorization: token OAUTH-TOKEN" https://api.github.com
+
+Question 3:
+
+	La premiere requete, POST, ne fonctionne pas
+	Le deuxieme requete, GET, fonctionne
+	
+Question 4:
+	
+	Permet la création d'une application de statistique du répository GIT par jour
+	
+	Mobile:
+		trier les versions des commits
+		afficher les branches
+		historiser l'évolution du projet
+		
+	Web:
+		trier les versions des commits
+		afficher les branches
+		historiser l'évolution du projet
+		
+	
+	Lien Mobile: https://ninjamock.com/s/9J88T
+	Lien Web: https://ninjamock.com/s/8J88T
