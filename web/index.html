@@ -3,16 +3,97 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>TP3 - Appel à une API</title>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<style>
+		header
+		{
+			width:700px;
+			margin: 0 auto;
+			
+		}
+		
+		h1
+		{
+		 margin-left : 50px;
+		}
+		
+		section
+		{
+		 width:700px;
+		 margin: 0 auto;
+		}
+		
+		img{
+		
+			height:200px;
+			width:200px;
+			margin : 50px 50px;
+			
+		}
+		
+		fieldset
+		{
+			width :400px;
+			margin-left:50px;
+		}
+		
+		
 		</style>
 	</head>
 	<body>
 		<header>
-		<h1>Appel à l'API méteo</h1>
+		<h1>Appel à l'API Flickr</h1>
 		</header>
 		<section>
-			<article>
+			
+			<fieldset>
+				<h3>Formulaire d'envoi</h3>
+				<h5>Saisissez dans le formulaire le genre de photo que vous désirez voir</h5>
+				<input type="text" id="motcle">
+				<input type="button" value="Trouver des photos" onClick="cherchePhoto($('#motcle').val())"><br/>
+			</fieldset>
+			<article id='images'>
+				
 			</article>
 		<section>
 	</body>
+	<script type="text/javascript">
+
+		function cherchePhoto(motcle) {
+			
+			 
+			var urlDistante="http://api.flickr.com/services/feeds/photos_public.gne?tags="+motcle+"&tagmode=any&format=json&jsoncallback=?";
+
+			 $.ajax({
+       url : urlDistante,
+       type : 'GET',
+       dataType : 'JSON',
+       success : function(code_json, statut){ // success est toujours en place, bien sûr !
+
+			 $('#images').empty();
+		     $.getJSON( urlDistante, function( data ) {
+		      $.each( data.items, function( i, item ) {
+		        $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );  
+		      });
+		   
+      
+       });
+ 
+       },
+
+       error : function(resultat, statut, erreur){
+       	
+       	alert(erreur+" : "+status+" : "+resultat);
+
+       },
+       
+       complete : function(resultat, statut){
+				//alert(status+" : "+resultat);
+       }
+
+	});
+	}
+
+	</script>
 </html>
+
