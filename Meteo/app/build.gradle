@@ -22,7 +22,5 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:23.0.1'
-    compile files("libs/flickr4java-2.13.jar")
-    compile files("libs/scribe-1.3.7.jar")
-    compile files("libs/org")
+    compile files('libs/flickrapi-1.2.jar')
 }

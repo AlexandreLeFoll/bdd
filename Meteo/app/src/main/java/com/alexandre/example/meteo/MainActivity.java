@@ -4,41 +4,61 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.flickr4java.flickr.Flickr;
-import com.flickr4java.flickr.FlickrException;
-import com.flickr4java.flickr.REST;
-import com.flickr4java.flickr.test.TestInterface;
+import com.aetrion.flickr.Flickr;
+import com.aetrion.flickr.REST;
+import com.aetrion.flickr.photos.Photo;
+import com.aetrion.flickr.photos.SearchParameters;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Objects;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.io.*;
+
 
 
 public class MainActivity extends AppCompatActivity {
-    public static final String BASE_URL = "https://query.yahooapis.com";
+    Flickr f;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        String apikey;
+        String secret;
 
-        Collection<Objects> results = null;
+        // Create a Flickr instance with your data. No need to authenticate
         try {
-            String apiKey = "2fb6799978eadf999b34b57d20776080";
-            String sharedSecret = "51ad4ea7d45f40f8";
-            Flickr f;
-            f = new Flickr(apiKey, sharedSecret, new REST());
-            //TestInterface testInterface = f.getTestInterface();
-            // = testInterface.echo(Collections.EMPTY_MAP);
-        } catch (Exception e) {
+            Flickr flickr = new Flickr("2fb6799978eadf999b34b57d20776080", "51ad4ea7d45f40f8", new REST());
+
+            // Set the wanted search parameters (I'm not using real variables in the example)
+            SearchParameters searchParameters = new SearchParameters();
+            searchParameters.setAccuracy(1);
+            ArrayList<Photo> list = flickr.getPhotosInterface().search(searchParameters, 0, 0);
+
+            for (Iterator iterator = list.iterator(); iterator.hasNext();) {
+                Photo photo = (Photo) iterator.next();
+
+                photo.getLargeUrl()
+
+                ByteArrayOutputStream b = new ByteArrayOutputStream();
+                b.write(photo.g);
+
+                FileOutputStream file = new FileOutputStream("/tmp/" + photo.getId() + ".jpg");
+                file.write(IOUtils.toByteArray(is));
+                file.close();
+            }
+        }catch(Throwable e){
             e.printStackTrace();
         }
 
-        if(results!=null){
-            ((TextView)findViewById(R.id.test)).setText(results.size());
-        }
     }
 
     @Override
