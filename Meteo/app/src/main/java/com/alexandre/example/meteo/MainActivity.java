@@ -4,12 +4,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.flickr4java.flickr.Flickr;
+import com.flickr4java.flickr.FlickrException;
+import com.flickr4java.flickr.REST;
+import com.flickr4java.flickr.test.TestInterface;
 
-import retrofit.GsonConverterFactory;
-import retrofit.Retrofit;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Objects;
+
 
 public class MainActivity extends AppCompatActivity {
     public static final String BASE_URL = "https://query.yahooapis.com";
@@ -18,17 +23,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
 
-        Gson gson = new GsonBuilder()
-                .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
-                .create();
+        Collection<Objects> results = null;
+        try {
+            String apiKey = "2fb6799978eadf999b34b57d20776080";
+            String sharedSecret = "51ad4ea7d45f40f8";
+            Flickr f;
+            f = new Flickr(apiKey, sharedSecret, new REST());
+            //TestInterface testInterface = f.getTestInterface();
+            // = testInterface.echo(Collections.EMPTY_MAP);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-
-
+        if(results!=null){
+            ((TextView)findViewById(R.id.test)).setText(results.size());
+        }
     }
 
     @Override
