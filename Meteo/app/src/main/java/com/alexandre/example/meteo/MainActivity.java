@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -24,40 +25,12 @@ import java.io.*;
 
 
 public class MainActivity extends AppCompatActivity {
-    Flickr f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String apikey;
-        String secret;
-
-        // Create a Flickr instance with your data. No need to authenticate
-        try {
-            Flickr flickr = new Flickr("2fb6799978eadf999b34b57d20776080", "51ad4ea7d45f40f8", new REST());
-
-            // Set the wanted search parameters (I'm not using real variables in the example)
-            SearchParameters searchParameters = new SearchParameters();
-            searchParameters.setAccuracy(1);
-            ArrayList<Photo> list = flickr.getPhotosInterface().search(searchParameters, 0, 0);
-
-            for (Iterator iterator = list.iterator(); iterator.hasNext();) {
-                Photo photo = (Photo) iterator.next();
-
-                photo.getLargeUrl()
-
-                ByteArrayOutputStream b = new ByteArrayOutputStream();
-                b.write(photo.g);
-
-                FileOutputStream file = new FileOutputStream("/tmp/" + photo.getId() + ".jpg");
-                file.write(IOUtils.toByteArray(is));
-                file.close();
-            }
-        }catch(Throwable e){
-            e.printStackTrace();
-        }
 
     }
 
