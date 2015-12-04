@@ -1,5 +1,5 @@
 # TD1_BDD-Client
-RenduTD1
+RenduTD1 Alexis_Moisan, Rémi_Perrin, Alexandre_Le-Foll
 
 Etude API GitHub :
 
