@@ -1,4 +1,4 @@
-package com.alexandre.example.facebookcall;
+package com.example.telsydra.facebookcall;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
